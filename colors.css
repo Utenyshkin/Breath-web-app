@@ -1,0 +1,38 @@
+/* Default (base colors) */
+:root {
+    --play-button-color: #6267D5;
+    --play-button-color-hover: #4F54C2;
+    --progress-ring-stroke-color: #6267D5;
+    --apply-button-color: #6267D5;
+    --cell-border-color: #6267D5;
+    --cell-background-color: #595B86;
+    --circle-base-rgb: 98, 103, 213;
+    --circle-base-shadow-color: #6267D5;
+    --background-gradient: linear-gradient(180deg, #25263F 0%, #19191A 100%);
+}
+
+/* Relaxation */
+.relaxation-theme {
+    --play-button-color: #6267D5;
+    --play-button-color-hover: #4F54C2;
+    --progress-ring-stroke-color: #6267D5;
+    --apply-button-color: #6267D5;
+    --cell-border-color: #6267D5;
+    --cell-background-color: #595B86;
+    --circle-base-rgb: 98, 103, 213;
+    --circle-base-shadow-color: #6267D5;
+    --background-gradient: linear-gradient(180deg, #25263F 0%, #19191A 100%);
+}
+
+/* Focus */
+.focus-theme {
+    --play-button-color: #E9693A;
+    --play-button-color-hover: #C5552D;
+    --progress-ring-stroke-color: #E9693A;
+    --apply-button-color: #E9693A;
+    --cell-border-color: #E9693A;
+    --cell-background-color: #9E6859;
+    --circle-base-rgb: 233, 105, 58;
+    --circle-base-shadow-color: #E9693A;
+    --background-gradient: linear-gradient(180deg, #2F1916 0%, #19191A 100%);
+}

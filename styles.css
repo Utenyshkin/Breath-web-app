@@ -1,0 +1,449 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+.app {
+    min-height: 100vh;
+    background: var(--background-gradient);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header {
+    width: 100%;
+    text-align: center;
+    padding-top: 60px;
+}
+
+/* #meditation-type {
+    font-size: 24px;
+} */
+
+.main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.circles {
+    position: relative;
+    width: 480px;
+    height: 480px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+/* <!-- overlap-group-wrapper → ellipse-1 -->
+<!-- overlap-group → ellipse-2 -->
+<!-- ellipse → ellipse-3 -->
+<!-- div → ellipse-4 -->
+<!-- ellipse-2 → ellipse-5 --> */
+
+.circles .ellipse-1,
+.circles .ellipse-2,
+.circles .ellipse-3,
+.circles .ellipse-4,
+.circles .ellipse-5 {
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 1s ease-in-out, height 1s ease-in-out;
+    will-change: width, height;
+}
+
+.circles .ellipse-1 {
+    width: 456px;
+    height: 456px;
+    background-color: rgba(var(--circle-base-rgb), 0.1);
+}
+
+.circles .ellipse-2 {
+    width: 392px;
+    height: 392px;
+    background-color: rgba(var(--circle-base-rgb), 0.15);
+}
+
+.circles .ellipse-3 {
+    width: 328px;
+    height: 328px;
+    background-color: rgba(var(--circle-base-rgb), 0.25);
+}
+
+.circles .ellipse-4 {
+    width: 264px;
+    height: 264px;
+    background-color: rgba(var(--circle-base-rgb), 0.25);
+}
+
+.circles .ellipse-5 {
+    width: 184px;
+    height: 184px;
+    background-color: rgba(var(--circle-base-rgb), 1);
+    box-shadow: 0px 4px 75px -8px var(--circle-base-shadow-color);
+}
+
+.current-phase {
+    font-family: "Roboto Mono", monospace;
+    font-weight: 500;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+    z-index: 1;
+}
+
+.footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 60px;
+}
+
+.menu {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+/* --- Прогресс-индикатор ---  */
+.progress-container {
+    position: absolute;
+    /* top: 0;
+    left: 0; */
+    width: 60px;
+    height: 60px;
+    z-index: 1;
+    display: none;
+    pointer-events: none;
+    /* появляется после фазы "приготовьтесь" */
+}
+
+.progress-ring {
+    width: 100%;
+    height: 100%;
+    /* viewBox: 0 0 60 60; */
+    transform: rotate(-90deg);
+}
+
+.progress-ring-bg {
+    fill: none;
+    /* stroke: rgba(255, 255, 255, 0.05);
+    stroke-width: 4; */
+}
+
+.progress-ring-circle {
+    fill: none;
+    stroke: var(--progress-ring-stroke-color);
+    stroke-width: 4;
+    stroke-dasharray: 175.9;
+    /* 2 * π * 28 */
+    stroke-dashoffset: 175.9;
+    stroke-linecap: round;
+    transition: stroke-dashoffset linear;
+}
+
+/* --- Кнопки --- */
+.button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #2A2A2A;
+    transition: background-color 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.button:hover {
+    background-color: #3B373F;
+}
+
+.button.disabled {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+}
+
+.icon-play {
+    width: 32px;
+    height: 32px;
+}
+
+/* --- Кнопка "Play" --- */
+.play-button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 32px;
+    background-color: var(--play-button-color);
+    ;
+    border-radius: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.play-button:hover {
+    background-color: var(--play-button-color-hover);
+}
+
+.button-text {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22.4px;
+    white-space: nowrap;
+}
+
+
+
+/* --- Badge времени --- */
+.timer-badge {
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #716878;
+    border-radius: 16px;
+    padding: 2px 6px;
+    white-space: nowrap;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* --- Стили фона затемнения при открытии попапа --- */
+body.popup-open::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+    z-index: 99;
+}
+
+/* --- Стили попапа выбора продолжительности и типа --- */
+.popup {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 300ms ease, transform 300ms ease;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.popup-container {
+    background: #3a3a3c;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 400px;
+    min-width: 288px;
+    margin: 16px;
+}
+
+.popup.active {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.popup.mobile {
+    align-items: flex-end;
+    /* прижимаем содержимое вниз */
+    transform: translateY(100%);
+}
+
+.popup.active.mobile {
+    transform: translateY(0);
+}
+
+.popup.desktop {
+    transform: scale(0.96);
+}
+
+.popup.active.desktop {
+    transform: scale(1);
+}
+
+.popup-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 16px 24px;
+}
+
+.popup-header .title {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.popup-header .cancel-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 16px;
+}
+
+.cell,
+.div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.cell {
+    padding: 10px 14px;
+    border: 2px solid var(--cell-border-color);
+    background: var(--cell-background-color);
+}
+
+#type-options .cell {
+    padding: 12px 14px;
+}
+
+.cell .text-wrapper {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.cell .check {
+    width: 24px;
+    height: 24px;
+    background-image: url("img/icon-color.svg");
+    background-size: cover;
+}
+
+.div {
+    padding: 14px 16px;
+    background-color: #525259;
+}
+
+/* .title-2 {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #ffffff;
+} */
+
+.label-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.text-wrapper {
+    font-size: 16px;
+    /* или твой текущий стиль заголовка */
+    font-weight: 500;
+    line-height: 20px;
+    color: #ffffff;
+}
+
+.phase-pattern {
+    font-size: 12px;
+    margin-top: 4px;
+    color: #E4DDDD;
+}
+
+
+.popup-footer-btn {
+    display: flex;
+    padding: 24px 16px 16px;
+    width: 100%;
+    flex-direction: column;
+}
+
+.popup-footer-btn .button {
+    background-color: var(--apply-button-color);
+    font-family: 'Inter', sans-serif;
+    color: white;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+#play-btn {
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+#play-btn.play {
+    padding: 14px 32px;
+    border-radius: 18px;
+    background-color: var(--play-button-color);
+    border: none;
+    gap: 12px;
+
+}
+
+#play-btn.pause {
+    padding: 14px;
+    border-radius: 40px;
+    background-color: #4D3F58;
+    border: 4px solid #5F4E6C;
+    gap: 8px;
+}
+
+#play-btn.icon-play {
+    transition: width 0.2s, height 0.2s;
+}
+
+#play-btn.pause .icon-play {
+    width: 24px;
+    height: 24px;
+}
+
+#play-btn.play .icon-play {
+    width: 32px;
+    height: 32px;
+}

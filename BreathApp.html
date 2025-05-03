@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Дыхательная медитация</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="colors.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="app">
+        <header class="header">
+            <h1 id="meditation-type">Расслабление</h1>
+        </header>
+
+        <main class="main">
+            <div class="circles">
+                <div class="ellipse-1"></div>
+                <div class="ellipse-2"></div>
+                <div class="ellipse-3"></div>
+                <div class="ellipse-4"></div>
+                <div class="ellipse-5"></div>
+                <p class="current-phase" id="current-phase"></p>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="menu" id="controls">
+
+                <div class="button" id="timer-btn">
+                    <img src="img/timer-icon.svg" alt="Timer" class="icon" />
+                    <div class="timer-badge" id="selected-duration">5:00</div>
+                </div>
+
+                <div class="button play-button" id="play-btn">
+                    <img src="img/play-icon.svg" alt="Play" class="icon-play" />
+                    <div class="progress-container" id="progress-container">
+                        <svg class="progress-ring">
+                            <circle class="progress-ring-bg" cx="30" cy="30" r="28" />
+                            <circle class="progress-ring-circle" cx="30" cy="30" r="28" />
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="button" id="settings-btn">
+                    <img src="img/settings-icon.svg" alt="Settings" class="icon" />
+                </div>
+            </div>
+        </footer>
+
+        <!-- Попап выбора продолжительности -->
+        <div class="popup popup-duration" id="duration-popup">
+            <div class="popup-container">
+                <div class="popup-header">
+                    <div class="title">Продолжительность</div>
+                    <img class="cancel-icon" src="img/cancel-icon.svg" onclick="closePopup('duration-popup')" />
+                </div>
+                <div class="popup-content" id="duration-options">
+                    <div class="div" data-value="1">
+                        <div class="title-2">1 минута</div>
+                    </div>
+                    <div class="div" data-value="2">
+                        <div class="title-2">2 минуты</div>
+                    </div>
+                    <div class="div" data-value="5">
+                        <div class="title-2">5 минут</div>
+                    </div>
+                    <div class="div" data-value="7">
+                        <div class="title-2">7 минут</div>
+                    </div>
+                    <div class="div" data-value="10">
+                        <div class="title-2">10 минут</div>
+                    </div>
+                </div>
+                <div class="popup-footer-btn">
+                    <button class="button" onclick="applyDuration()">Применить</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Попап выбора типа медитации -->
+        <div class="popup popup-type" id="type-popup">
+            <div class="popup-container">
+                <div class="popup-header">
+                    <div class="title">Тип медитации</div>
+                    <img class="cancel-icon" src="img/cancel-icon.svg" onclick="closePopup('type-popup')" />
+                </div>
+                <div class="popup-content" id="type-options">
+                    <div class="cell" data-value="relax"></div>
+                    <div class="div" data-value="focus"></div>
+                </div>
+                <div class="popup-footer-btn">
+                    <button class="button" onclick="applyType()">Применить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
