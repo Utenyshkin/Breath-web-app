@@ -11,9 +11,9 @@ const durationPopup = document.getElementById('duration-popup');
 const typePopup = document.getElementById('type-popup');
 
 // Значения размеров кругов
-const initialSizes = [456, 392, 328, 264, 184];
+const initialSizes = [376, 328, 280, 232, 168];
 const inhaleStartSizes = [268, 236, 204, 172, 140];
-const inhaleEndSizes = [376, 328, 280, 232, 168];
+const inhaleEndSizes = [456, 392, 328, 264, 184];
 
 // Переменные состояния
 let meditationActive = false;
@@ -30,10 +30,10 @@ let elapsedTime = 0;
 
 const types = {
     relax: [
-        { name: 'Вдох', time: 4 },
-        { name: 'Задержка', time: 4 },
-        { name: 'Выдох', time: 4 },
-        { name: 'Задержка', time: 3 },
+        { name: 'Вдох', time: 5 },
+        { name: 'Задержка', time: 5 },
+        { name: 'Выдох', time: 5 },
+        { name: 'Задержка', time: 5 },
     ],
     focus: [
         { name: 'Вдох', time: 5 },
@@ -146,10 +146,22 @@ function resetInterval() {
     phaseIndex = 0;
     elapsedTime = 0;
     currentPhase.textContent = '';
-    meditationTypeEl.textContent = selected.querySelector('.text-wrapper').textContent;
+    meditationTypeEl.textContent = meditationType === 'relax' ? 'Расслабление' : 'Концентрация';
+    // Сброс кругов с bounce-эффектом
     setCircleSizes(initialSizes, true, 600);
+    // Сброс кнопки
     togglePlayPause(false);
+    // Сброс прогресс-индикатора
     resetProgress();
+    // Запуск конфетти (если подключен скрипт)
+    // if (typeof launchConfettiAtCenter === 'function') {
+    //     launchConfettiAtCenter();
+    // }
+    // 🎉 Конфетти за кнопкой Play
+    const playBtn = document.getElementById('play-btn');
+    if (typeof launchConfettiBehindElement === 'function') {
+        launchConfettiBehindElement(playBtn);
+    }
 }
 
 function setTheme(themeName) {
