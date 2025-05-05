@@ -367,6 +367,10 @@ body.popup-open::before {
     background-color: #525259;
 }
 
+.div:hover {
+    background-color: var(--cell-background-color);
+}
+
 /* .title-2 {
     font-size: 16px;
     font-weight: 500;
@@ -414,6 +418,10 @@ body.popup-open::before {
     border: none;
     cursor: pointer;
     text-align: center;
+}
+
+.popup-footer-btn .button:hover {
+    background-color: var(--apply-button-color-hover);
 }
 
 #play-btn {
