@@ -4,6 +4,7 @@
     --play-button-color-hover: #4F54C2;
     --progress-ring-stroke-color: #6267D5;
     --apply-button-color: #6267D5;
+    --apply-button-color-hover: #4F54C2;
     --cell-border-color: #6267D5;
     --cell-background-color: #595B86;
     --circle-base-rgb: 98, 103, 213;
@@ -17,6 +18,7 @@
     --play-button-color-hover: #4F54C2;
     --progress-ring-stroke-color: #6267D5;
     --apply-button-color: #6267D5;
+    --apply-button-color-hover: #4F54C2 
     --cell-border-color: #6267D5;
     --cell-background-color: #595B86;
     --circle-base-rgb: 98, 103, 213;
@@ -30,6 +32,7 @@
     --play-button-color-hover: #C5552D;
     --progress-ring-stroke-color: #E9693A;
     --apply-button-color: #E9693A;
+    --apply-button-color-hover: #C5552D;
     --cell-border-color: #E9693A;
     --cell-background-color: #9E6859;
     --circle-base-rgb: 233, 105, 58;
