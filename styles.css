@@ -70,33 +70,35 @@ body {
     will-change: width, height;
 }
 
+/* 376, 328, 280, 232, 168 */
+
 .circles .ellipse-1 {
-    width: 456px;
-    height: 456px;
+    width: 376px;
+    height: 376px;
     background-color: rgba(var(--circle-base-rgb), 0.1);
 }
 
 .circles .ellipse-2 {
-    width: 392px;
-    height: 392px;
+    width: 328px;
+    height: 328px;
     background-color: rgba(var(--circle-base-rgb), 0.15);
 }
 
 .circles .ellipse-3 {
-    width: 328px;
-    height: 328px;
+    width: 280px;
+    height: 280px;
     background-color: rgba(var(--circle-base-rgb), 0.25);
 }
 
 .circles .ellipse-4 {
-    width: 264px;
-    height: 264px;
+    width: 232px;
+    height: 232px;
     background-color: rgba(var(--circle-base-rgb), 0.25);
 }
 
 .circles .ellipse-5 {
-    width: 184px;
-    height: 184px;
+    width: 168px;
+    height: 168px;
     background-color: rgba(var(--circle-base-rgb), 1);
     box-shadow: 0px 4px 75px -8px var(--circle-base-shadow-color);
 }
